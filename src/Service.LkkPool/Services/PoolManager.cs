@@ -109,7 +109,7 @@ namespace Service.LkkPool.Services
 
                         await _levelWriter.InsertOrReplaceAsync(level);
                         
-                        Console.WriteLine($"Place new order Buy {level.BuyPrice}; {level.Volume}. Sell: {level.CountSell}; Buy: {level.CountBuy}");
+                        Console.WriteLine($"[{DateTime.UtcNow:dd-HH:mm}] Place new order Buy {level.BuyPrice}; {level.Volume}. Sell: {level.CountSell}; Buy: {level.CountBuy}");
                     }
                     
                 }
@@ -146,7 +146,7 @@ namespace Service.LkkPool.Services
 
                         await _levelWriter.InsertOrReplaceAsync(level);
                         
-                        Console.WriteLine($"Place new order Sell {level.SellPrice}; {level.Volume}. Sell: {level.CountSell}; Buy: {level.CountBuy}");
+                        Console.WriteLine($"[{DateTime.UtcNow:dd-HH:mm}] Place new order Sell {level.SellPrice}; {level.Volume}. Sell: {level.CountSell}; Buy: {level.CountBuy}");
                     }
                 }
             }
