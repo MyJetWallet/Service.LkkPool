@@ -338,6 +338,24 @@ namespace Service.LkkPool.Services
             _config.Status = ConfigStatus.Active;
             SaveConfig(_config);
             await Task.Delay(2000);
+            
+            Console.WriteLine($"Start from {_config.StartTime} and price {_config.StartPrice}");
+            balances = await _client.PrivateApi.GetBalancesAsync(new Empty());
+
+            var equity = 0m;
+            foreach (var balance in balances.Payload)
+            {
+                var ba = decimal.Parse(balance.Available);
+                
+                if (balance.AssetId == config.BaseAsset)
+                {
+                    ba = ba * _config.StartPrice;
+                }
+                
+                Console.WriteLine($"Balance {balance.AssetId}: {balance.Available} (${ba})");
+                equity = equity + ba;
+            }
+            Console.WriteLine($"Equity: {equity}");
 
             var result = await _client.PrivateApi.PlaceBulkLimitOrderAsync(bulkRequest);
 
