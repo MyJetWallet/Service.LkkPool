@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Service.LkkPool.Client\Service.LkkPool.Client.csproj" />
     <ProjectReference Include="..\..\src\Service.LkkPool.Grpc\Service.LkkPool.Grpc.csproj" />
+    <ProjectReference Include="..\..\src\Service.LkkPool\Service.LkkPool.csproj" />
   </ItemGroup>
 
 </Project>
