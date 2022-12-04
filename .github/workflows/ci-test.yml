@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
         build_args: app_version=myjetwallet.service.lkkpool-test:latest,app_compilation_date=${{ steps.current-time.outputs.formattedTime }}
 
   restart:
-    runs-on: ubuntu-latest    
+    runs-on: self-hosted    
     needs: build
     steps:
     - name: Restart service
