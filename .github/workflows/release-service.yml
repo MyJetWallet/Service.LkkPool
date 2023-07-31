@@ -15,11 +15,12 @@ jobs:
       repository_name: ${{ github.event.repository.name }}
       repository_type: ${{ github.event.repository.private }}
       release_version: ${GITHUB_REF#refs/tags/}
-    secrets: 
+    secrets:
       ST_DOCKER_USER: ${{ secrets.ST_DOCKER_USER }}
       ST_DOCKER_PASSWORD: ${{ secrets.ST_DOCKER_PASSWORD }}
       AZURE_CONTAINER_REGISTRY: ${{ secrets.AZURE_CONTAINER_REGISTRY }}
       UAT_GIT_TOKEN: ${{ secrets.UAT_GIT_TOKEN }}
+      NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
   test:
     uses: MyJetWallet/DevOps/.github/workflows/build_test.yml@master
     if: github.ref == 'refs/heads/master'
@@ -27,9 +28,10 @@ jobs:
       repository_name: ${{ github.event.repository.name }}
       repository_type: ${{ github.event.repository.private }}
       release_version: 0.0.${{ github.run_number }}
-    secrets: 
+    secrets:
       ST_DOCKER_USER: ${{ secrets.ST_DOCKER_USER }}
       ST_DOCKER_PASSWORD: ${{ secrets.ST_DOCKER_PASSWORD }}
       AZURE_CONTAINER_REGISTRY: ${{ secrets.AZURE_CONTAINER_REGISTRY }}
       UAT_GIT_TOKEN: ${{ secrets.UAT_GIT_TOKEN }}
       KUBE_CONFIG_DATA__ST_TEST: ${{ secrets.KUBE_CONFIG_DATA__ST_TEST }}
+      NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
